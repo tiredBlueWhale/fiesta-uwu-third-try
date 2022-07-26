@@ -89,4 +89,42 @@ classDiagram
     }
 ```
 
-### 
+### State Diagramms
+
+#### Next Node 
+
+```mermaid
+stateDiagram-v2
+    state if_state <<choice>>
+    [*] --> GameController
+   
+    state GameController {
+        [*] --> [*]
+        [*] --> Game
+        Game --> [*]
+    }
+
+    GameController --> if_state
+    if_state --> NodeDialogController: node == NodeDialog
+    if_state --> NodeDecisionController :  node == NodeDecision
+    if_state --> NodeRootController :  node == NodeRootController
+   
+
+    state NodeRootController {
+        [*] --> Root
+    }
+
+    NodeRootController --> [*]
+
+    state NodeDialogController {
+        [*] --> Dialog
+    }
+
+    NodeDialogController --> [*]
+
+    state NodeDecisionController {
+        [*] --> Decision
+    }
+
+    NodeDecisionController --> [*]
+```
