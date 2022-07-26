@@ -37,6 +37,7 @@ classDiagram
 
     }
 
+    NodeDialog *-- Dialog
     class Dialog {
         +string text;
         +List<Character> speakers
@@ -48,15 +49,20 @@ classDiagram
         List~Dialog~ dialogs
     }
 
+    %% NodeSingleOutput *-- Output
+    %% NodeMultiOutput *-- Output
     class Output {
         +Node output
     }
 
+    Dialog o-- Character
+    ConsequenceCharacter o-- Character
     class Character {
         +string name
         +number points;
     }
 
+    OutputConsequence *-- Consequence
     class Consequence {
 
     }
